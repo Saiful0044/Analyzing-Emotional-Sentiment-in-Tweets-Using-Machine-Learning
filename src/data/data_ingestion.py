@@ -40,7 +40,7 @@ def preprocess_data(data: pd.DataFrame) -> pd.DataFrame:
     try:
         data.drop(columns=['tweet_id'], inplace=True)
         data = data[data['sentiment'].isin(['happiness', 'sadness'])]
-        data['sentiment'] = data['sentiment'].replace({'happiness': 1, 'sadness':0})
+        data['sentiment'].replace({'happiness': 1, 'sadness':0}, inplace=True)
         logger.info("Data preprocessing completed")
         return data
     except KeyError as e:
@@ -86,7 +86,8 @@ def save_data(train_data: pd.DataFrame, test_data: pd.DataFrame, data_path: str)
 def main():
     try:
         df = load_data(data_url="https://raw.githubusercontent.com/campusx-official/jupyter-masterclass/main/tweet_emotions.csv")
-        preprocess_data(data=df)
+
+        df = preprocess_data(data=df)
         # load yaml file
         params = load_params(params_path='params.yaml')
         test_size = params['data_ingestion']['test_size']

@@ -7,8 +7,14 @@ import mlflow.sklearn
 import dagshub
 
 
-mlflow.set_tracking_uri("https://dagshub.com/Saiful0044/Analyzing-Emotional-Sentiment-in-Tweets-Using-Machine-Learning.mlflow")
-dagshub.init(repo_owner='Saiful0044', repo_name='Analyzing-Emotional-Sentiment-in-Tweets-Using-Machine-Learning', mlflow=True)
+mlflow.set_tracking_uri(
+    "https://dagshub.com/Saiful0044/Analyzing-Emotional-Sentiment-in-Tweets-Using-Machine-Learning.mlflow"
+)
+dagshub.init(
+    repo_owner="Saiful0044",
+    repo_name="Analyzing-Emotional-Sentiment-in-Tweets-Using-Machine-Learning",
+    mlflow=True,
+)
 
 # logging configuration
 logger = logging.getLogger('model_evaluation')
